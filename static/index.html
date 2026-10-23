@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalp Hastalığı Risk Tahmini</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="card">
+    <header>
+      <div class="logo">❤</div>
+      <h1>Kalp Hastalığı Risk Tahmini</h1>
+      <p>Hasta bilgilerini girin, yapay zeka modeli riski tahmin etsin.</p>
+    </header>
+
+    <form id="form">
+      <label>Yaş
+        <input type="number" name="Age" min="1" max="120" value="50" required>
+      </label>
+      <label>Cinsiyet
+        <select name="Sex">
+          <option value="M">Erkek</option>
+          <option value="F">Kadın</option>
+        </select>
+      </label>
+      <label>Göğüs Ağrısı Tipi
+        <select name="ChestPainType">
+          <option value="ATA">Atipik Anjina (ATA)</option>
+          <option value="NAP">Anjinal Olmayan Ağrı (NAP)</option>
+          <option value="ASY">Asemptomatik (ASY)</option>
+          <option value="TA">Tipik Anjina (TA)</option>
+        </select>
+      </label>
+      <label>Dinlenme Kan Basıncı (mm Hg)
+        <input type="number" name="RestingBP" min="0" max="300" value="120" required>
+      </label>
+      <label>Kolesterol (mg/dl)
+        <input type="number" name="Cholesterol" min="0" max="700" value="200" required>
+      </label>
+      <label>Açlık Kan Şekeri &gt; 120 mg/dl
+        <select name="FastingBS">
+          <option value="0">Hayır</option>
+          <option value="1">Evet</option>
+        </select>
+      </label>
+      <label>Dinlenme EKG
+        <select name="RestingECG">
+          <option value="Normal">Normal</option>
+          <option value="ST">ST-T dalga anormalliği</option>
+          <option value="LVH">Sol ventrikül hipertrofisi</option>
+        </select>
+      </label>
+      <label>Maksimum Kalp Atış Hızı
+        <input type="number" name="MaxHR" min="30" max="250" value="150" required>
+      </label>
+      <label>Egzersize Bağlı Anjina
+        <select name="ExerciseAngina">
+          <option value="N">Hayır</option>
+          <option value="Y">Evet</option>
+        </select>
+      </label>
+      <label>Oldpeak (ST depresyonu)
+        <input type="number" name="Oldpeak" step="0.1" min="-5" max="10" value="0" required>
+      </label>
+      <label>ST Eğimi
+        <select name="ST_Slope">
+          <option value="Up">Yukarı (Up)</option>
+          <option value="Flat">Düz (Flat)</option>
+          <option value="Down">Aşağı (Down)</option>
+        </select>
+      </label>
+      <button type="submit">Tahmin Et</button>
+    </form>
+
+    <section id="result" class="hidden">
+      <div id="verdict"></div>
+      <div class="bar"><div id="fill"></div></div>
+      <small id="prob"></small>
+    </section>
+    <footer>Bu uygulama eğitim amaçlıdır; tıbbi tavsiye yerine geçmez.</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
